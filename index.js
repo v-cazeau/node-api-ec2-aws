@@ -1,11 +1,34 @@
-import cors from 'cors'
-import express from 'express'
+import cors from "cors";
+import express from "express";
 
-const app = express()
+const app = express();
 
-app.use(express.json())
-app.use(cors())
+app.use(express.json());
+app.use(cors());
 
-app.get('/', (req,res) => res.send('Welcome to my API'))
+const dogs = [
+  {
+    name: "Paco",
+    breed: "Chihuahua",
+    age: 34,
+  },
+  {
+    name: "Buba",
+    breed: "Labrador",
+    age: 56,
+  },
+  {
+    name: "Lucia",
+    breed: "Yorkie",
+    age: 23,
+  },
+  {
+    name: "Bob",
+    breed: "Pitbull",
+    age: 69,
+  },
+];
 
-app.listen(4000, () => console.log('API running 🥳'))
+app.get("/", (req, res) => res.json(dogs));
+
+app.listen(4000, () => console.log("API running 🥳"));
